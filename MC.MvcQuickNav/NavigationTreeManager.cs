@@ -77,11 +77,16 @@ namespace MC.MvcQuickNav
         {
             var i = 0;
             var maxLength = Math.Min(s1.Length, s2.Length);
-            while (i < maxLength && s1[i] == s2[i])
+            while (i < maxLength && AreEqual(s1[i], s2[i]))
             {
                 i++;
             }
             return i;
+        }
+
+        private bool AreEqual(char c1, char c2)
+        {
+            return String.Compare(c1.ToString(), c2.ToString(), StringComparison.OrdinalIgnoreCase) == 0;
         }
     }
 }

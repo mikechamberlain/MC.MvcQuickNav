@@ -15,6 +15,11 @@ namespace MC.MvcQuickNav.ExampleWeb
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Download",
+                "download",
+                new { controller = "Home", action = "Download", sublevel = UrlParameter.Optional });
+
+            routes.MapRoute(
                 "Demo",
                 "demo/{level}/{sublevel}",
                 new { controller = "Demo", action = "Index", sublevel = UrlParameter.Optional });

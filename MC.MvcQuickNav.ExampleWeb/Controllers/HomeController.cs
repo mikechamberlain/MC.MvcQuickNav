@@ -9,6 +9,16 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
             return View();
         }
 
+        public ActionResult Features()
+        {
+            return View();
+        }
+
+        public ActionResult Download()
+        {
+            return View();
+        }
+
         public ActionResult Walkthrough()
         {
             return View();

@@ -53,13 +53,12 @@ header > nav {
 
 .childnav-container {
     float: left;
-    width: 200px;
+    width: 220px;
 }
 
 section {
     float: left;
     width: 860px;
-    margin-left: 20px;
 }
 
 .gist {

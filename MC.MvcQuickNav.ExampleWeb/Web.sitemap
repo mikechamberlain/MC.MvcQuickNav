@@ -2,7 +2,9 @@
 <siteMap>
   <siteMapNode title="Overview" url="~/">
     <siteMapNode title="Walkthrough" url="~/home/walkthrough" />
+    <siteMapNode title="Features" url="~/home/features" />
   </siteMapNode>
+  <siteMapNode title="Download" url="~/download" />
   <siteMapNode title="Controls" url="~/controls" description="The controls that QuickNav can render">
     <siteMapNode title="Navigation Menu" url="~/controls/menu" />
     <siteMapNode title="Sitemap" url="~/controls/sitemap" />

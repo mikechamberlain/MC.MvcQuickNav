@@ -1,7 +1,12 @@
 nav.children {
     width: 200px;
+    margin-right: 20px;
 }
 
+nav.children:before {
+    content: "In this section:";
+    display: block;
+}
 nav.children ul {
     list-style: none;
     margin: 0px;

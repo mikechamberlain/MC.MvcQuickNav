@@ -14,8 +14,8 @@
 <p>Apply some CSS styling (<a href="https://gist.github.com/chambem9/4984751/raw/0bebf13cd4498bc76ccd7085e8a97ccbf448fec7/example-menu.css">here's what we're using</a>) 
     and you're good to go.</p>
 
-<p>You can limit the maximum depth of the nodes rendered using the optional parameter to this helper.
-    For instance, if we do <code>@@Html.NavigationMenu(1)</code> then only the top level items are rendered - no drop downs appear:
-</p>
+@Html.NavigationMenu()
 
-@Html.NavigationMenu(1)
+<p>You can limit the maximum depth of the nodes rendered using the optional parameter to this helper.
+    For instance, if we do <code>@@Html.NavigationMenu(1)</code> then only the top level items are rendered - no drop downs appear.
+</p>

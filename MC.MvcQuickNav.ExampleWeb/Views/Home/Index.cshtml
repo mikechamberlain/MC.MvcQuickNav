@@ -6,10 +6,10 @@
 <h3>What's Included</h3>
 
 <ul>
-    <li><strong>@Html.ActionLink("Full navigation control", "menu", "controls")</strong>, 
+    <li><strong>@Html.ActionLink("Menu navigation control", "menu", "controls")</strong>, 
         suitable for rendering navigations menus (like the one at the top of the page)</li>
-    <li><strong>@Html.ActionLink("Site map", "sitemap", "controls")</strong>, 
-        a plain text representation of the structure of your site</li>
+    <li><strong>@Html.ActionLink("Site Map control", "sitemap", "controls")</strong>, 
+        a plain representation of the structure of your site</li>
     <li><strong>@Html.ActionLink("In This Section control", "inthissection", "controls")</strong>,
          showing us the other items in our current section (like the one of the left)</li>
     <li><strong>@Html.ActionLink("Breadcrumb control", "breadcrumbs", "controls")</strong>, showing the user the their current path in the site (like the one above)</li>
@@ -42,18 +42,5 @@
     </li>
 </ol>
 
-<p>@Html.ActionLink("Check out the walkthrough for more info", "walkthrough")</p>
+<blockquote>@Html.ActionLink("Check out the walkthrough for more details", "walkthrough", "home")</blockquote>
 
-<h3>Features</h3>
-<ul>
-    <li>Clean, standard, semantic markup, making them easy to style.</li>
-    <li>All navigation controls are generated from a single sitemap file.</li>
-    <li>Supports an arbitrary depth of navigation (though make sure your CSS can cope with it!).</li>
-    <li>Supprts tooltips and opening in a new window.</li>
-    <li>Tracks user's current node automatically.
-        <ul>
-            <li>An <code>active</code> CSS class is added to this node, which allows the current node to be distinguished in the UI.</li>
-            <li>It works by comparing URLs instead of the less flexible method of using controller actions and methods.</li>
-        </ul>
-    </li>
-</ul>
