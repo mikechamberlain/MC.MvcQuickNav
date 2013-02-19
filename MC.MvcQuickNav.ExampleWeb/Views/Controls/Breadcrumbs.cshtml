@@ -1,4 +1,6 @@
-﻿<code>@@Html.Breadcrumbs()</code>
+﻿@using MC.MvcQuickNav
+
+<code>@@Html.Breadcrumbs()</code>
 
 <p>The breadcrumbs control show the user the path the took to get to their current location, like the <em>You are here</em> bit above.</p>
 
@@ -10,4 +12,10 @@
 
 <script src="https://gist.github.com/chambem9/4983864.js"></script>
 
-<p>Notice how the active node is rendered with an <code>active</code> CSS class, allowing you to style it differently, and no link.</p>
+<p>Style it with something like this:</p>
+
+<script src="https://gist.github.com/chambem9/4985025.js"></script>
+
+<p>And you'll see something like this:</p>
+
+@Html.Breadcrumbs()

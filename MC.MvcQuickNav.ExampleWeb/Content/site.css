@@ -39,9 +39,6 @@ header > nav {
 }
 
 .breadcrumbs-container {
-    border: 1px dotted #BBBBBB;
-    border-width: 1px 0px;
-    padding: 3px 2px;
     margin-bottom: 20px;
 }
 
@@ -57,7 +54,7 @@ section {
 }
 
 .gist {
-    line-height: 1;
+    line-height: 1.2;
     font-size: 0.8em;
 }
 

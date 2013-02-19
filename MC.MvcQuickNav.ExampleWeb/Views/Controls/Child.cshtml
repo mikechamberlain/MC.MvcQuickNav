@@ -1,4 +1,6 @@
-﻿<code>@@Html.ChildNavigation()</code>
+﻿@using MC.MvcQuickNav
+
+<code>@@Html.ChildNavigation()</code>
 
 <p>If we imagine that our website divided into a series of main sections, each one represented by 
     one of the top level items on the menu above, then the child navigation shows us everything within this section.
@@ -10,5 +12,17 @@
 <p>You can render a child navigation by calling its HTML helper:</p>
 
 <script src="https://gist.github.com/chambem9/4984254.js"></script>
+
+<p>Which will output something like this:</p>
+
+<script src="https://gist.github.com/chambem9/4985123.js"></script>
+
+<p>Apply some CSS, for exmaple:</p>
+
+<script src="https://gist.github.com/chambem9/4985094.js"></script>
+
+<p>And you'll see something like this:</p>
+
+@Html.ChildNavigation()
 
 <p>As with the Navigation Menu control, you can pass the maximum depth as a parameter to have it render only down to this depth.</p>

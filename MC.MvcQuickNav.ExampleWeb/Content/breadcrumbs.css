@@ -1,5 +1,7 @@
 nav.breadcrumbs {
-    display: inline;
+    border: 1px dotted #BBBBBB;
+    border-width: 1px 0px;
+    padding: 3px 2px;
 }
 
 nav.breadcrumbs ul {

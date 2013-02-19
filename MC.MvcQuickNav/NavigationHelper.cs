@@ -109,6 +109,10 @@ namespace MC.MvcQuickNav
 
                 var spanTag = new TagBuilder("span");
                 spanTag.SetInnerText(node.Value.Title);
+                if (!String.IsNullOrWhiteSpace(node.Value.Description))
+                {
+                    spanTag.MergeAttribute("title", node.Value.Description);
+                }
 
                 if (String.IsNullOrWhiteSpace(node.Value.Url))
                 {
@@ -121,10 +125,6 @@ namespace MC.MvcQuickNav
                     if (node.Value.OpenInNewWindow)
                     {
                         aTag.MergeAttribute("target", "_blank");
-                    }
-                    if (!String.IsNullOrWhiteSpace(node.Value.Title))
-                    {
-                        aTag.MergeAttribute("title", node.Value.Description);
                     }
                     aTag.InnerHtml += spanTag;
                     liTag.InnerHtml += aTag;
