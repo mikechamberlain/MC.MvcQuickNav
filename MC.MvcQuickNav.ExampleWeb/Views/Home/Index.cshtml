@@ -45,7 +45,8 @@
 <ul>
     <li>Clean, standard, semantic markup, making them easy to style.</li>
     <li>All navigation controls are generated from a single sitemap file.</li>
-    <li>The user's current node is tracked automatically.
+    <li>Supports an arbitrary depth of navigation (though make sure your CSS can cope with it!).</li>
+    <li>Tracks user's current node automatically.
         <ul>
             <li>An <code>active</code> CSS class is added to this node, which allows the current node to be distinguished in the UI.</li>
             <li>It works by comparing URLs instead of the less flexible method of using controller actions and methods.</li>
