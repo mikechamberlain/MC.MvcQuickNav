@@ -13,10 +13,10 @@ sub-tree(s) to render for each control.
 All helpers render their markup semantically as a series of nested unordered list tags, with classes added to the 
 active node and those with children to enable the UI to distinguish these to the user.
 
-The HTML rendered by the NavigationMenu() helper is compatible with the CSS provided by
-http://cssmenumaker.com/, so this can be easily dropped in and tweaked, else you can design the CSS from scratch.
+The HTML rendered by the NavigationMenu() helper is completely semantic and compatible with many
+pure CSS menu examples found on the web.
 
 An XML provider is included, which parses the navigation tree from an XML file.  It uses the same file format as
-ASP.NET WebForms web.sitemap, so you can just drop this file into the root of your website.
+ASP.NET WebForms web.sitemap.
 
 See the example web project for a full exmaple.
