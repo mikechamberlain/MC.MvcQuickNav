@@ -1,0 +1,26 @@
+﻿@using MC.MvcQuickNav
+@model List<NavigationNode>
+
+<code>@@Html.CustomNavigation(navigationNodes, cssClass)</code>
+
+<p>The included controls read the site map file, generate a tree to represent the map, process this tree to contain only the nodes
+    to be rendered, and then renders this tree to HTML.
+</p>
+<p>If you need complete control over the tree nodes then you can create the tree manually and pass it in the the CustomNavigation helper.
+    As an exmaple, the following controller method creates a tree of random nodes and passes it as the model to the view:
+</p>
+
+<script src="https://gist.github.com/chambem9/4984499.js"></script>
+
+<p>The view itself then passes the tree into the helper.
+    Note how we pass in a CSS class (in this case <em>menu</em>) to be applied to the containing <code>nav</code> tag.
+    This is how you can hook in to style your control as you wish. For now, we're just using the same style as our main menu above (defined in menu.css).
+</p>
+
+<script src="https://gist.github.com/chambem9/4984509.js"></script>
+
+<p>The resulting control looks like this (refresh the page to generate another one):</p>
+
+<div style="min-height: 300px;">
+@Html.CustomNavigation(Model, "menu")
+</div>

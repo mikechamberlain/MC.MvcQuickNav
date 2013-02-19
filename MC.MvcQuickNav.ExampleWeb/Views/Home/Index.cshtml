@@ -1,0 +1,51 @@
+﻿<p>MvcQuickNav is a series of ASP.NET MVC HTML helpers designed to render common navigation controls with the minimum of fuss.
+    You're looking at them right now!
+</p>
+
+<h3>What's included</h3>
+
+<ul>
+    <li><strong>@Html.ActionLink("Full navigation control", "full", "controls")</strong>, 
+        suitable for rendering navigations menus (like the one at the top of the page)</li>
+    <li><strong>@Html.ActionLink("Child navigation control", "child", "controls")</strong>,
+         useful for showing related links in the user's current area (like the one of the left)</li>
+    <li><strong>@Html.ActionLink("Breadcrumb control", "breadcrumbs", "controls")</strong>, showing the user the their current path in the site (like the one above)</li>
+    <li><strong>@Html.ActionLink("Custom control", "custom", "controls")</strong>, giving you complete control of what is displayed</li>
+</ul>
+<h3>Quick Start</h3>
+
+<ol>
+    <li>Add a reference to the library, either from the NuGet package or by downloading from GitHub:
+        <ul>
+            <li><code>Install-Package MC.MvcQuickNav</code></li>
+            <li><a href="https://github.com/chambem9/MC.MvcQuickNav">Download the source from GitHub</a> (including this example website)</li>
+        </ul>
+    </li>
+    <li>Create a sitemap file called web.sitemap in the root of your website
+        <ul>
+            <li><a href="https://gist.github.com/chambem9/4983670/raw/67226db1a1a18a9966c4378318604174df94a7c5/sitemap.xml">Example web.sitemap</a></li>
+        </ul>
+    </li>
+    <li>Call the helper to automatically render a navigation control from your sitemap
+        <ul>
+            <li><code>@@Html.FullNavigation()</code></li>
+        </ul>
+    </li>
+    <li>Apply CSS styles to make your control look beautiful
+        <ul>
+            <li><a href="https://gist.github.com/chambem9/4984751/raw/5bc22e45e6b3025865ac9c9b92844b40ac0b86e3/example-menu.css">Example CSS file for the navigation menu</a></li>
+        </ul>
+    </li>
+</ol>
+
+<p>@Html.ActionLink("Check out the walkthrough for more info", "walkthrough")</p>
+
+<h3>Features</h3>
+<ul>
+    <li>Clean, standard, semantic markup, making it easy to style.</li>
+    <li>All navigation controls are generated from a single sitemap file.</li>
+    <li>The user's current node is calculated automatically, allowing it to be highlighted with CSS.
+        It's compares the current URL with each navigation item to find the best match, and adds an <code>active</code> CSS class to that item.
+        For instance, on the navigation menu above, the Getting Started item is shown in a different color, because we are in that section.
+    </li>
+</ul>

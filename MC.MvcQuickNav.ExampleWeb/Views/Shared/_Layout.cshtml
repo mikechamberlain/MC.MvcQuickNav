@@ -1,0 +1,38 @@
+﻿@using MC.MvcQuickNav
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@Html.NavigationTitle()</title>
+    <link href="@Url.Content("~/Content/site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/breadcrumbs.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/childnav.css")" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+        <header>
+            <h1>
+                MvcQuickNav
+            </h1>
+            @Html.FullNavigation()
+        </header>
+        <div class="breadcrumbs-container">
+            You are here: 
+            @Html.Breadcrumbs()
+        </div>
+        <div class="childnav-container">
+            In this section:
+            @Html.ChildNavigation()
+        </div>
+        
+        <section>
+            <h2>@Html.NavigationTitle()</h2>
+            @RenderBody()
+        </section>
+        <div class="clearer"></div>
+        <footer>
+            Mike Chamberlain 2013
+        </footer>
+    </body>
+</html>

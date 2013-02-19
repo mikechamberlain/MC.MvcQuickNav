@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode title="Getting Started" url="~/">
+    <siteMapNode title="Walkthrough" url="~/home/walkthrough" />
+  </siteMapNode>
+  <siteMapNode title="Controls" url="~/controls" description="The controls that QuickNav can render">
+    <siteMapNode title="Navigation Menu" url="~/controls/full" />
+    <siteMapNode title="Child Navigation" url="~/controls/child" />
+    <siteMapNode title="Breadcrumbs" url="~/controls/breadcrumbs" />
+    <siteMapNode title="Custom" url="~/controls/custom" />
+  </siteMapNode>
+  <siteMapNode title="Example" url="~/demo" description="A menu to show some of the features in action">
+    <siteMapNode title="More items" url="~/demo/more">
+      <siteMapNode title="1st Item" url="~/demo/more/1" />
+      <siteMapNode title="2nd Item" url="~/demo/more/2" />
+      <siteMapNode title="3rd Item" url="~/demo/more/3" />
+      <siteMapNode title="4th Item" url="~/demo/more/4" />
+    </siteMapNode>
+    <siteMapNode title="Even more" url="~/demo/evenmore">
+      <siteMapNode title="1st Item" url="~/demo/evenmore/1" />
+      <siteMapNode title="2nd Item" url="~/demo/evenmore/2" />
+      <siteMapNode title="3rd Item" url="~/demo/evenmore/3" />
+      <siteMapNode title="4th Item" url="~/demo/evenmore/4" />
+      <siteMapNode title="5th Item" url="~/demo/evenmore/4" />
+      <siteMapNode title="6th Item" url="~/demo/evenmore/4" />
+      <siteMapNode title="7th Item" url="~/demo/evenmore/4" />
+      <siteMapNode title="8th Item" url="~/demo/evenmore/4" />
+      <siteMapNode title="9th Item" url="~/demo/evenmore/4" />
+    </siteMapNode>
+    <siteMapNode title="Opens in new window" url="~/demo/newwindow" newWindow="true" />
+  </siteMapNode>
+</siteMap>

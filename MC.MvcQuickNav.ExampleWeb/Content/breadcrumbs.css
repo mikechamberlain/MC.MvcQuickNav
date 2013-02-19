@@ -1,0 +1,19 @@
+nav.breadcrumbs {
+    display: inline;
+}
+
+nav.breadcrumbs ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+}
+
+nav.breadcrumbs li {
+    display: inline;
+    margin: 0px;
+}
+
+nav.breadcrumbs li:before {
+    content: " > ";
+}
