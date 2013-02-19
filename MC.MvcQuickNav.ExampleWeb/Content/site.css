@@ -68,8 +68,8 @@ section {
 }
 
 code {
-    font-size: 1.3em;
-    background-color: #EEEEEE;
+    font-family: Consolas, "Liberation Mono", Courier, monospace;
+    background-color: #f8f8ff;
 }
 
 footer {
