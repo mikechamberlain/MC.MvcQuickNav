@@ -31,7 +31,7 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
             return View();
         }
 
-        public ActionResult Child()
+        public ActionResult InThisSection()
         {
             return View();
         }

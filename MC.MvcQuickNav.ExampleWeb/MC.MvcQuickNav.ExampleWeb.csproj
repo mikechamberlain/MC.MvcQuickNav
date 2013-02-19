@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\breadcrumbs.css" />
-    <Content Include="Content\childnav.css" />
+    <Content Include="Content\section.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
@@ -125,7 +125,7 @@
     <Content Include="Views\Controls\Breadcrumbs.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Controls\Child.cshtml" />
+    <Content Include="Views\Controls\InThisSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Controls\Custom.cshtml" />

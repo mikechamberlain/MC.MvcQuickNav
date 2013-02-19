@@ -1,9 +1,10 @@
 ﻿@using MC.MvcQuickNav
 
-<code>@@Html.ChildNavigation()</code>
+<code>@@Html.InThisSection()</code>
 
 <p>If we imagine that our website divided into a series of main sections, each one represented by 
-    one of the top level items on the menu above, then the child navigation shows us everything within this section.
+    one of the top level items on the menu above, then the InThisSection navigation control shows us 
+    links to the other items in this section.
     You can see one to the left of this page.</p>
 <p>It it easier to appreciate with more levels of navigation, so take a look at the 
     @Html.ActionLink("Examples section", "index", "demo").
@@ -23,6 +24,6 @@
 
 <p>And you'll see something like this:</p>
 
-@Html.ChildNavigation()
+@Html.InThisSection()
 
 <p>As with the Navigation Menu control, you can pass the maximum depth as a parameter to have it render only down to this depth.</p>

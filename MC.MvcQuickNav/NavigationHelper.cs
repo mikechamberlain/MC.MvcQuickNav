@@ -47,7 +47,7 @@ namespace MC.MvcQuickNav
         /// <summary>
         /// Renders the child navigation tree for the user's current location in the site.
         /// </summary>
-        public static MvcHtmlString ChildNavigation(this HtmlHelper helper, int maxDepth = DefaultMaxChildNavigationDepth)
+        public static MvcHtmlString InThisSection(this HtmlHelper helper, int maxDepth = DefaultMaxChildNavigationDepth)
         {
             var manager = helper.GetNavigationTreeManager();
             var activeBranch = manager.GetActiveBranch(maxDepth);
