@@ -4,12 +4,17 @@
         <name>MC.MvcQuickNav</name>
     </assembly>
     <members>
-        <member name="M:MC.MvcQuickNav.NavigationHelper.FullNavigation(System.Web.Mvc.HtmlHelper,System.Int32)">
+        <member name="M:MC.MvcQuickNav.NavigationHelper.NavigationMenu(System.Web.Mvc.HtmlHelper,System.Int32)">
             <summary>
-            Renders the navigation tree for the entire site.
+            Renders the navigation menu for the site.
             </summary>
         </member>
-        <member name="M:MC.MvcQuickNav.NavigationHelper.ChildNavigation(System.Web.Mvc.HtmlHelper,System.Int32)">
+        <member name="M:MC.MvcQuickNav.NavigationHelper.SiteMap(System.Web.Mvc.HtmlHelper,System.Int32)">
+            <summary>
+            Renders the site map for the site.
+            </summary>
+        </member>
+        <member name="M:MC.MvcQuickNav.NavigationHelper.InThisSection(System.Web.Mvc.HtmlHelper,System.Int32)">
             <summary>
             Renders the child navigation tree for the user's current location in the site.
             </summary>
