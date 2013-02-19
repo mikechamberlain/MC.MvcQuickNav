@@ -1,6 +1,8 @@
 MC.MvcQuickNav
 ==============
 
+See http://mvcquicknav.apphb.com for a live demo.
+
 A series of MVC HTML helpers to generate navigation menus, breadcrumb trails and child navigation controls,
 supporting an arbitrary level of depth.
 
