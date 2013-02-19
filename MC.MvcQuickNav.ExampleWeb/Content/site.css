@@ -37,6 +37,7 @@ h2 {
 h3 {
     font-size: 1.6em;
     line-height: 1;
+    margin-bottom: 10px;
 }
 
 header > div,
@@ -68,6 +69,7 @@ section {
 
 code {
     font-size: 1.3em;
+    background-color: #EEEEEE;
 }
 
 footer {
