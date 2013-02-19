@@ -4,7 +4,8 @@
     <siteMapNode title="Walkthrough" url="~/home/walkthrough" />
   </siteMapNode>
   <siteMapNode title="Controls" url="~/controls" description="The controls that QuickNav can render">
-    <siteMapNode title="Navigation Menu" url="~/controls/full" />
+    <siteMapNode title="Navigation Menu" url="~/controls/menu" />
+    <siteMapNode title="Sitemap" url="~/controls/sitemap" />
     <siteMapNode title="Child Navigation" url="~/controls/child" />
     <siteMapNode title="Breadcrumbs" url="~/controls/breadcrumbs" />
     <siteMapNode title="Custom Navigation" url="~/controls/custom" />

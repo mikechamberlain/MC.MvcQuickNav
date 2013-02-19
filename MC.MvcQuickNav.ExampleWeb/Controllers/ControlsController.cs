@@ -16,7 +16,12 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
             return View();
         }
 
-        public ActionResult Full()
+        public ActionResult Menu()
+        {
+            return View();
+        }
+
+        public ActionResult Sitemap()
         {
             return View();
         }
@@ -33,7 +38,7 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
 
         public ActionResult Custom()
         {
-            var model = GetRandomNodes(3, 6, 3);
+            var model = GetRandomNodes(2, 6, 3);
             return View(model);
         }
 
@@ -41,8 +46,10 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
         {
             if(maxDepth == 0)
                 return new List<NavigationNode>();
+
             var nodes = new List<NavigationNode>();
             var limit = Random.Next(min, max);
+
             for (var i = 0; i < limit; i++)
             {
                 var item = new NavigationItem
@@ -54,6 +61,7 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
                 var node = new NavigationNode(item, GetRandomNodes(min, max, maxDepth - 1)); 
                 nodes.Add(node);
             }
+
             return nodes;
         }
 
@@ -69,6 +77,5 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
         }
 
         private static readonly Random Random = new Random((int)DateTime.Now.Ticks);
-
     }
 }

@@ -3,7 +3,7 @@
 <code>@@Html.FullNavigation()</code>
 <p>Outputs the entire navigation menu, like the one you see above.</p>
 
-<h3>Here's a minimal example:</h3>
+<p>Here's a minimal example:</p>
 
 <script src="https://gist.github.com/chambem9/4983653.js"></script>
 
@@ -14,7 +14,7 @@
 <p>Apply some CSS styling and you're good to go.</p>
 
 <p>You can limit the maximum depth of the nodes rendered using the optional parameter to this helper.
-    For instance, if we do <code>@@Html.FullNavigation(1)</code> then only the top level items are rendered - no drop downs appear:
+    For instance, if we do <code>@@Html.NavigationMenu(1)</code> then only the top level items are rendered - no drop downs appear:
 </p>
 
-@Html.FullNavigation(1)
+@Html.NavigationMenu(1)

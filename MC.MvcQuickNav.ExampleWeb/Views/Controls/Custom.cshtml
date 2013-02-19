@@ -3,10 +3,15 @@
 
 <code>@@Html.CustomNavigation(navigationNodes, cssClass)</code>
 
-<p>The included controls read the site map file, generate a tree to represent the map, process this tree to contain only the nodes
-    to be rendered, and then renders this tree to HTML.
-</p>
-<p>If you need complete control over the tree nodes then you can create the tree manually and pass it in the the CustomNavigation helper.
+<p>The included controls go through the following steps to create their output:</p>
+<ol>
+    <li>read the site map file</li>
+    <li>generate a tree to represent the map</li>
+    <li>process this tree to contain only the nodes required for the view</li>
+    <li>renders this tree to HTML</li>
+</ol>
+
+<p>If you need complete control over the output then you can create the tree manually hook straight in to step 4 with the CustomNavigation helper.
     As an exmaple, the following controller method creates a tree of random nodes and passes it as the model to the view:
 </p>
 
@@ -14,7 +19,7 @@
 
 <p>The view itself then passes the tree into the helper.
     Note how we pass in a CSS class (in this case <code>menu</code>) to be applied to the containing <code>nav</code> tag.
-    This is how you can hook in to style your control as you wish. For now, we're just using the same style as our main menu above (defined in menu.css).
+    This is how you can hook in to style your custom navigation control as you wish. For now, we're just using the same style as our main menu above (defined in menu.css).
 </p>
 
 <script src="https://gist.github.com/chambem9/4984509.js"></script>

@@ -15,15 +15,33 @@ namespace MC.MvcQuickNav
         private const string ActiveNodeCssClassName = "active";
 
         /// <summary>
-        /// Renders the navigation tree for the entire site.
+        /// Renders the navigation menu for the site.
         /// </summary>
-        public static MvcHtmlString FullNavigation(this HtmlHelper helper, int maxDepth = DefaultMaxNavigationMenuDepth)
+        public static MvcHtmlString NavigationMenu(this HtmlHelper helper, int maxDepth = DefaultMaxNavigationMenuDepth)
+        {
+            return FullNavigation(helper, maxDepth, "menu");
+        }
+
+        /// <summary>
+        /// Renders the site map for the site.
+        /// </summary>
+        public static MvcHtmlString SiteMap(this HtmlHelper helper, int maxDepth = DefaultMaxNavigationMenuDepth)
+        {
+            return FullNavigation(helper, maxDepth, "sitemap");
+        }
+
+        private static MvcHtmlString FullNavigation(HtmlHelper helper, int maxDepth, string cssClass)
         {
             var manager = helper.GetNavigationTreeManager();
             var nodes = manager.GetNodes(1); // main menu shows active node at the top level
             foreach(var node in nodes)
                 node.Prune(maxDepth);
-            return nodes.BuildHtml("menu");
+            return nodes.BuildHtml(cssClass);
+        }
+
+        static MvcHtmlString FullNavigation(IEnumerable<NavigationNode> nodes, string cssClass)
+        {
+            return nodes.BuildHtml(cssClass);
         }
 
         /// <summary>

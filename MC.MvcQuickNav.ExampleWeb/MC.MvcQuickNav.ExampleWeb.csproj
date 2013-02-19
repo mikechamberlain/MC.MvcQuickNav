@@ -116,7 +116,7 @@
     <Content Include="Views\Home\Walkthrough.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Controls\Full.cshtml" />
+    <Content Include="Views\Controls\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Demo\Index.cshtml" />
@@ -129,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Controls\Custom.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Controls\Sitemap.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
