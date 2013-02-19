@@ -10,7 +10,7 @@
     @Html.ActionLink("Examples section", "index", "demo").
 </p>
 
-<p>You can render a child navigation by calling its HTML helper:</p>
+<p>You can render an In This Section control by calling its HTML helper:</p>
 
 <script src="https://gist.github.com/chambem9/4984254.js"></script>
 
@@ -25,5 +25,9 @@
 <p>And you'll see something like this:</p>
 
 @Html.InThisSection()
+
+<p>(As we mentioned above, this makes more sense with a deeper navigation tree - see the
+    @Html.ActionLink("examples", "", "demo").
+</p>
 
 <p>As with the Navigation Menu control, you can pass the maximum depth as a parameter to have it render only down to this depth.</p>

@@ -39,10 +39,11 @@ nav.menu {
 
             nav.menu ul li.active {
                 background: #dfdfdf;
-                background: -moz-linear-gradient(#efefef 0%, #999999 100%);
-                background: -webkit-linear-gradient(#efefef 0%,#999999 100%);
-                background: -ms-linear-gradient(#efefef 0%,#999999 100%);
-                background: linear-gradient(#efefef 0%, #999999 100%);
+                background: -moz-linear-gradient(#efefef 0%, #aaaaaa 100%);
+                background: -webkit-linear-gradient(#efefef 0%,#aaaaaa 100%);
+                background: -ms-linear-gradient(#efefef 0%,#aaaaaa 100%);
+                background: linear-gradient(#efefef 0%, #aaaaaa 100%);
+                font-weight: bold;
             }
 
             nav.menu ul li:hover {
@@ -63,6 +64,7 @@ nav.menu {
                 text-decoration: none;
                 white-space: nowrap;
                 width: 150px;
+                font-weight: normal;
             }
 
         nav.menu ul ul {

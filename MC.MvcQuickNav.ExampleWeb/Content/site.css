@@ -58,7 +58,7 @@ header > nav {
 
 section {
     float: left;
-    width: 840px;
+    width: 860px;
     margin-left: 20px;
 }
 
@@ -68,7 +68,7 @@ section {
 }
 
 code {
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 footer {
@@ -81,4 +81,13 @@ footer {
 
 .clearer {
     clear: both;
+}
+
+blockquote {
+    border: 1px dotted #DDDDDD;
+    background-color: #FAFAFA;
+    margin: 10px 0px;
+    padding: 20px;
+    font-size: 1.1em;
+    text-align: center;
 }
