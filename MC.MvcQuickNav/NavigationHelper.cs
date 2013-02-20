@@ -34,7 +34,7 @@ namespace MC.MvcQuickNav
         {
             var manager = helper.GetNavigationTreeManager();
             var nodes = manager.GetNodes(1); // main menu shows active node at the top level
-            foreach(var node in nodes)
+            foreach (var node in nodes)
                 node.Prune(maxDepth);
             return nodes.BuildHtml(cssClass);
         }
@@ -66,7 +66,7 @@ namespace MC.MvcQuickNav
 
             var activePath = activeNode.FindPath(n => n.Value.IsActive).ToList();
             activePath.Last().Value.Url = "";
-            foreach(var node in activePath)
+            foreach (var node in activePath)
                 node.Prune(1);
             return activePath.BuildHtml("breadcrumbs");
         }
@@ -78,9 +78,9 @@ namespace MC.MvcQuickNav
         {
             var manager = helper.GetNavigationTreeManager();
             var active = manager.GetActiveNode();
-            return active == null 
-                ? MvcHtmlString.Empty 
-                : new MvcHtmlString(active.Value.Title);
+            return active == null
+                       ? MvcHtmlString.Empty
+                       : new MvcHtmlString(active.Value.Title);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace MC.MvcQuickNav
         {
             var ulTag = new TagBuilder("ul");
 
-            foreach(var node in nodes)
+            foreach (var node in nodes)
             {
                 var liTag = new TagBuilder("li");
                 if (node.Value.IsActive)
@@ -155,8 +155,13 @@ namespace MC.MvcQuickNav
 
         private static NavigationManager GetNavigationTreeManager(this HtmlHelper helper)
         {
-            var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);
-            var siteMapProvider = new XmlSiteMapProvider(urlHelper, HostingEnvironment.MapPath(DefaultSiteMapUrl));
+            var siteMapProvider = DependencyResolver.Current.GetService<ISiteMapProvider>();
+            // default to XmlSiteMapProvider
+            if (siteMapProvider == null)
+            {
+                var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);
+                siteMapProvider = new XmlSiteMapProvider(urlHelper, HostingEnvironment.MapPath(DefaultSiteMapUrl));
+            }
             return new NavigationManager(siteMapProvider, helper.ViewContext.RequestContext.HttpContext.Request.Url);
         }
     }
