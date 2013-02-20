@@ -40,7 +40,7 @@ namespace MC.MvcQuickNav
         }
 
         /// <summary>
-        /// Renders the child navigation tree for the user's current location in the site.
+        /// Renders the navigation tree for the user's section.
         /// </summary>
         public static MvcHtmlString InThisSection(this HtmlHelper helper, int maxDepth = DefaultMaxChildNavigationDepth)
         {
@@ -51,7 +51,7 @@ namespace MC.MvcQuickNav
 
             activeBranch.Walk().Single(n => n.Value.IsActive).Value.Url = ""; // don't want the active node to be a link
             activeBranch.Prune(maxDepth);
-            return activeBranch.BuildHtml("children");
+            return activeBranch.BuildHtml("section");
         }
 
         /// <summary>

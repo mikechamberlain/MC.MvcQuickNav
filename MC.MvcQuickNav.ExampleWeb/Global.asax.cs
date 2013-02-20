@@ -20,9 +20,25 @@ namespace MC.MvcQuickNav.ExampleWeb
                 new { controller = "Home", action = "Download", sublevel = UrlParameter.Optional });
 
             routes.MapRoute(
+                "Controls",
+                "controls",
+                new { controller = "Controls", action = "Index" });
+
+            routes.MapRoute(
+                "DemoRoot",
+                "demo",
+                new { controller = "Demo", action = "Index" });
+
+            routes.MapRoute(
                 "Demo",
                 "demo/{level}/{sublevel}",
                 new { controller = "Demo", action = "Index", sublevel = UrlParameter.Optional });
+
+            routes.MapRoute(
+                "Home", // Route name
+                "{action}", // URL with parameters
+                new { controller = "Home" } // Parameter defaults
+            );
 
             routes.MapRoute(
                 "Default", // Route name

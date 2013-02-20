@@ -1,45 +1,45 @@
-nav.children {
+nav.section {
     width: 200px;
     margin-right: 20px;
 }
 
-nav.children:before {
+nav.section:before {
     content: "In this section:";
     display: block;
 }
-nav.children ul {
+nav.section ul {
     list-style: none;
     margin: 0px;
     padding: 0px;
 }
 
-nav.children span,
-nav.children a {
+nav.section span,
+nav.section a {
     display: block;
 }
 
-nav.children > ul > li > span,
-nav.children > ul > li > a  {
+nav.section > ul > li > span,
+nav.section > ul > li > a  {
     background-color: #DDDDDD;
     font-weight: bold;
 }
 
 
-nav.children > ul > li ul > li {
+nav.section > ul > li ul > li {
     background-color: #EEEEEE;
     font-weight: normal;
 }
 
-nav.children li > span,
-nav.children li > a {
+nav.section li > span,
+nav.section li > a {
     padding: 3px;
 }
 
-nav.children li li li {
+nav.section li li li {
     padding: 0px 0px 0px 20px;
 }
 
-nav.children li li li:before {
+nav.section li li li:before {
     content: "- ";
     float: left;
     position: relative;
@@ -47,6 +47,6 @@ nav.children li li li:before {
     top: 2px;
 }
 
-nav.children .active {
+nav.section .active {
     font-weight: bold;
 }

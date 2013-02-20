@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap>
-  <siteMapNode title="Overview" url="~/">
-    <siteMapNode title="Walkthrough" url="~/home/walkthrough" />
-    <siteMapNode title="Features" url="~/home/features" />
+  <siteMapNode title="About" url="~/">
+    <siteMapNode title="Walkthrough" url="~/walkthrough" />
+    <siteMapNode title="Features" url="~/features" />
   </siteMapNode>
   <siteMapNode title="Download" url="~/download" />
   <siteMapNode title="Controls" url="~/controls" description="The controls that QuickNav can render">
