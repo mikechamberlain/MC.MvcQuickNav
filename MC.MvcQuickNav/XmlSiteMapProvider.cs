@@ -20,11 +20,10 @@ namespace MC.MvcQuickNav
             _xmlText = File.ReadAllText(siteMapPath);
         }
 
-        public NavigationNode GetSiteMap()
+        public IEnumerable<NavigationNode> GetSiteMap()
         {
             var xdoc = XDocument.Parse(_xmlText);
-            var nodes = FromSiteMapElement(xdoc.Root);
-            return new NavigationNode(null, nodes);
+            return FromSiteMapElement(xdoc.Root);
         }
 
         private IEnumerable<NavigationNode> FromSiteMapElement(XElement xel)

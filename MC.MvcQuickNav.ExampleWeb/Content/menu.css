@@ -4,6 +4,10 @@ nav.menu {
     line-height: 24px;
 }
 
+nav.menu a {
+    text-decoration: none;
+}
+
     nav.menu ul ul {
         display: none;
     }
@@ -53,15 +57,14 @@ nav.menu {
                 background: -webkit-linear-gradient(top, #4f5964 0%,#5f6975 40%);
             }
 
-                nav.menu ul li:hover a {
+                nav.menu ul li:hover span {
                     color: #fff;
                 }
 
-            nav.menu ul li a {
+            nav.menu ul li span {
                 display: block;
                 padding: 5px;
                 color: #646464;
-                text-decoration: none;
                 white-space: nowrap;
                 width: 150px;
                 font-weight: normal;
@@ -82,7 +85,7 @@ nav.menu {
                 position: relative;
             }
 
-                nav.menu ul ul li a {
+                nav.menu ul ul li span {
                     color: #fff;
                     width: 150px;
                 }

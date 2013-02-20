@@ -8,6 +8,6 @@ namespace MC.MvcQuickNav
 {
     public interface ISiteMapProvider
     {
-        NavigationNode GetSiteMap();
+        IEnumerable<NavigationNode> GetSiteMap();
     }
 }

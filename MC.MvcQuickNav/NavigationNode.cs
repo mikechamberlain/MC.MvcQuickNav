@@ -5,10 +5,14 @@ namespace MC.MvcQuickNav
 {
     public class NavigationNode : ITreeNode<NavigationItem>
     {
-        private readonly List<NavigationNode> _children;
+        private List<ITreeNode<NavigationItem>> _children;
 
-        public NavigationItem Value { get; private set; }
-        public IEnumerable<ITreeNode<NavigationItem>> Children { get { return _children; } }
+        public NavigationItem Value { get; set; }
+        public IEnumerable<ITreeNode<NavigationItem>> Children
+        {
+            get { return _children; }
+            set { _children = value.ToList(); }
+        }
 
         public NavigationNode()
             : this(null)
@@ -18,7 +22,7 @@ namespace MC.MvcQuickNav
             : this(value, new List<NavigationNode>())
         {}
 
-        public NavigationNode(NavigationItem value, IEnumerable<NavigationNode> children)
+        public NavigationNode(NavigationItem value, IEnumerable<ITreeNode<NavigationItem>> children)
         {
             Value = value;
             _children = children.ToList();

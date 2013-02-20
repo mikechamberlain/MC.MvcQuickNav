@@ -34,23 +34,23 @@
             Provides a mechanism to render a custom navtigation control.
             </summary>
         </member>
-        <member name="M:MC.MvcQuickNav.NavigationTreeManager.GetNodes(System.Int32)">
+        <member name="M:MC.MvcQuickNav.NavigationManager.GetNodes(System.Int32)">
             <summary>
             Gets the entire navigation tree.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MC.MvcQuickNav.NavigationTreeManager.GetActiveBranch(System.Int32)">
+        <member name="M:MC.MvcQuickNav.NavigationManager.GetActiveBranch(System.Int32)">
             <summary>
             Returns the root of the user's current navigation node.
             </summary>
         </member>
-        <member name="M:MC.MvcQuickNav.NavigationTreeManager.GetActiveNode(System.Int32)">
+        <member name="M:MC.MvcQuickNav.NavigationManager.GetActiveNode(System.Int32)">
             <summary>
             Returns the user's current active node
             </summary>
         </member>
-        <member name="M:MC.MvcQuickNav.NavigationTreeManager.SetNodeActivity(System.Collections.Generic.IEnumerable{MC.MvcQuickNav.ITreeNode{MC.MvcQuickNav.NavigationItem}},System.Int32)">
+        <member name="M:MC.MvcQuickNav.NavigationManager.SetNodeActivity(System.Collections.Generic.IEnumerable{MC.MvcQuickNav.ITreeNode{MC.MvcQuickNav.NavigationItem}},System.Int32)">
             <summary>
             Sets the node whose URL is the most specific match to the current URL to be the active, and all others inactive.
             </summary>

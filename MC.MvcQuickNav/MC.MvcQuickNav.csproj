@@ -49,7 +49,7 @@
     <Compile Include="NavigationHelper.cs" />
     <Compile Include="NavigationItem.cs" />
     <Compile Include="NavigationNode.cs" />
-    <Compile Include="NavigationTreeManager.cs" />
+    <Compile Include="NavigationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TreeExtensions.cs" />
     <Compile Include="XmlSiteMapProvider.cs" />

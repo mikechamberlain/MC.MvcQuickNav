@@ -39,11 +39,6 @@ namespace MC.MvcQuickNav
             return nodes.BuildHtml(cssClass);
         }
 
-        static MvcHtmlString FullNavigation(IEnumerable<NavigationNode> nodes, string cssClass)
-        {
-            return nodes.BuildHtml(cssClass);
-        }
-
         /// <summary>
         /// Renders the child navigation tree for the user's current location in the site.
         /// </summary>
@@ -158,11 +153,11 @@ namespace MC.MvcQuickNav
             return ulTag;
         }
 
-        public static NavigationTreeManager GetNavigationTreeManager(this HtmlHelper helper)
+        private static NavigationManager GetNavigationTreeManager(this HtmlHelper helper)
         {
             var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);
             var siteMapProvider = new XmlSiteMapProvider(urlHelper, HostingEnvironment.MapPath(DefaultSiteMapUrl));
-            return new NavigationTreeManager(siteMapProvider, helper.ViewContext.RequestContext.HttpContext.Request.Url);
+            return new NavigationManager(siteMapProvider, helper.ViewContext.RequestContext.HttpContext.Request.Url);
         }
     }
 }

@@ -1,0 +1,21 @@
+﻿@using MC.MvcQuickNav
+@model IEnumerable<NavigationNode>
+<p>
+    Here is an example of creating a navigation tree by hand and rendering it to the view.  We see how the action method creates a tree 
+    of random nodes, sets one to be the active, and passes it as the model:
+</p>
+
+<script src="https://gist.github.com/chambem9/4984499.js"></script>
+
+<p>The view itself then passes the model into the helper.
+    Note how we pass in a CSS class (in this case <code>menu</code>) to be applied to the containing <code>nav</code> tag.
+    This is how you can hook in to style your custom navigation control as you wish. For now, we're just using the same style as our main menu above (defined in menu.css).
+</p>
+
+<script src="https://gist.github.com/chambem9/4984509.js"></script>
+
+<p>The resulting control looks like this (refresh the page to generate another one):</p>
+
+<div style="min-height: 300px;">
+    @Html.CustomNavigation(Model, "menu")
+</div>

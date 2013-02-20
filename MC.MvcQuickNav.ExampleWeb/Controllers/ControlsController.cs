@@ -38,44 +38,39 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
 
         public ActionResult Custom()
         {
-            var model = GetRandomNodes(2, 6, 3);
+            return View();
+        }
+
+        public ActionResult Manual()
+        {
+            var model = GetRandomTree(3);
+            model.First().Value.IsActive = true;
             return View(model);
         }
 
-        private List<NavigationNode> GetRandomNodes(int min, int max, int maxDepth)
+        private IEnumerable<NavigationNode> GetRandomTree(int maxDepth)
         {
-            if(maxDepth == 0)
+            if(maxDepth == 0) 
                 return new List<NavigationNode>();
 
-            var nodes = new List<NavigationNode>();
-            var limit = Random.Next(min, max);
-
-            for (var i = 0; i < limit; i++)
-            {
-                var item = new NavigationItem
+            return Enumerable.Range(3, 5).Select(i =>
+                new NavigationNode 
                 {
-                    Title = RandomString(5),
-                    Url = RandomString(10),
-                    Description = RandomString(20)
-                };
-                var node = new NavigationNode(item, GetRandomNodes(min, max, maxDepth - 1)); 
-                nodes.Add(node);
-            }
-
-            return nodes;
-        }
-
-        private string RandomString(int size)
-        {
-            var builder = new StringBuilder();
-            for (var i = 0; i < size; i++)
-            {
-                var ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * Random.NextDouble() + 65)));
-                builder.Append(ch);
-            }
-            return builder.ToString();
+                    Value = new NavigationItem
+                    {
+                        Title = new String((char)('a' + Random.Next(26)), Random.Next(1, 6)), 
+                        Url = Request.RawUrl
+                    },
+                    Children = GetRandomTree(maxDepth - 1)
+                }
+            );
         }
 
         private static readonly Random Random = new Random((int)DateTime.Now.Ticks);
+
+        public ActionResult NavigationManager()
+        {
+            return View();
+        }
     }
 }

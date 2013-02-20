@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace MC.MvcQuickNav
 {
-    public class NavigationTreeManager
+    public class NavigationManager
     {
         private readonly Uri _currentUrl;
         private readonly ISiteMapProvider _siteMapProvider;
 
-        public NavigationTreeManager(ISiteMapProvider siteMapProvider, Uri currentUrl)
+        public NavigationManager(ISiteMapProvider siteMapProvider, Uri currentUrl)
         {
             _currentUrl = currentUrl;
             _siteMapProvider = siteMapProvider;
@@ -19,11 +19,11 @@ namespace MC.MvcQuickNav
         /// Gets the entire navigation tree.
         /// </summary>
         /// <returns></returns>
-        public List<ITreeNode<NavigationItem>> GetNodes(int activeDepth = Int32.MaxValue)
+        public IEnumerable<NavigationNode> GetNodes(int activeDepth = Int32.MaxValue)
         {
-            var nodes = _siteMapProvider.GetSiteMap().Children.ToList();
+            var nodes = _siteMapProvider.GetSiteMap().ToList();
             SetNodeActivity(nodes, activeDepth);
-            return nodes.ToList();
+            return nodes;
         }
 
         /// <summary>
