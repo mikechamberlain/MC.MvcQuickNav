@@ -15,7 +15,7 @@
       <siteMapNode title="INavigationTreeProvider" url="~/controls/INavigationTreeProvider" />
     </siteMapNode>
   </siteMapNode>
-  <siteMapNode title="Example" url="~/demo" description="A menu to show some of the features in action">
+  <siteMapNode title="Demo" url="~/demo" description="A menu to show some of the features in action">
     <siteMapNode title="More items" url="~/demo/more">
       <siteMapNode title="1st Item" url="~/demo/more/1" />
       <siteMapNode title="2nd Item" url="~/demo/more/2" />

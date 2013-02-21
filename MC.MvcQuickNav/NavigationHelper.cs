@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -29,26 +28,25 @@ namespace MC.MvcQuickNav
         /// <summary>
         /// Renders the site map for the site.
         /// </summary>
-        public static MvcHtmlString SiteMap(this HtmlHelper helper, int maxDepth = DefaultMaxNavigationMenuDepth)
+        public static MvcHtmlString SiteMap(this HtmlHelper helper, int maxDepth = Int32.MaxValue)
         {
             return FullNavigation(helper, maxDepth, "sitemap");
         }
 
         private static MvcHtmlString FullNavigation(HtmlHelper helper, int maxDepth, string cssClass)
         {
-            var manager = helper.GetNavigationTreeManager();
-            var nodes = manager.GetNodes(1); // main menu shows active node at the top level
-            foreach(var node in nodes)
-                node.Prune(maxDepth);
+            var manager = GetNavigationManager(helper.ViewContext.RequestContext);
+            var nodes = manager.GetNodes(1).ToList(); // main menu shows active node at the top level
+            nodes.PruneMany(maxDepth);
             return nodes.BuildHtml(cssClass);
         }
 
         /// <summary>
-        /// Renders the navigation tree for the user's section.
+        /// Renders the navigation tree for the user's current section.
         /// </summary>
         public static MvcHtmlString InThisSection(this HtmlHelper helper, int maxDepth = DefaultMaxChildNavigationDepth)
         {
-            var manager = helper.GetNavigationTreeManager();
+            var manager = GetNavigationManager(helper.ViewContext.RequestContext);
             var activeBranch = manager.GetActiveBranch(maxDepth);
             if (activeBranch == null || !activeBranch.Children.Any())
                 return MvcHtmlString.Empty;
@@ -59,19 +57,18 @@ namespace MC.MvcQuickNav
         }
 
         /// <summary>
-        /// Renders the breadcrumb trail for the user's current position in the site.
+        /// Renders the breadcrumb trail for the user's current location in the site.
         /// </summary>
         public static MvcHtmlString Breadcrumbs(this HtmlHelper helper)
         {
-            var manager = GetNavigationTreeManager(helper);
+            var manager = GetNavigationManager(helper.ViewContext.RequestContext);
             var activeNode = manager.GetActiveBranch();
             if (activeNode == null)
                 return MvcHtmlString.Empty;
 
             var activePath = activeNode.FindPath(n => n.Value.IsActive).ToList();
             activePath.Last().Value.Url = "";
-            foreach(var node in activePath)
-                node.Prune(1);
+            activePath.PruneMany(1);
             return activePath.BuildHtml("breadcrumbs");
         }
 
@@ -80,7 +77,7 @@ namespace MC.MvcQuickNav
         /// </summary>
         public static MvcHtmlString NavigationTitle(this HtmlHelper helper)
         {
-            var manager = helper.GetNavigationTreeManager();
+            var manager = GetNavigationManager(helper.ViewContext.RequestContext);
             var active = manager.GetActiveNode();
             return active == null 
                 ? MvcHtmlString.Empty 
@@ -100,6 +97,7 @@ namespace MC.MvcQuickNav
             var treeNodes = nodes as List<ITreeNode<NavigationItem>> ?? nodes.ToList();
             if (nodes == null || !treeNodes.Any())
                 return MvcHtmlString.Empty;
+
             var tags = treeNodes.BuildTags();
             var parent = new TagBuilder("nav");
             parent.AddCssClass(cssClassName);
@@ -112,59 +110,46 @@ namespace MC.MvcQuickNav
             return BuildHtml(new[] {node}, cssClassName);
         }
 
-        private static TagBuilder BuildTags(this TreeNodes nodes)
+        private static FluentTagBuilder BuildTags(this TreeNodes nodes)
         {
-            var ulTag = new TagBuilder("ul");
+            var ulTag = new FluentTagBuilder("ul");
 
             foreach(var node in nodes)
             {
-                var liTag = new TagBuilder("li");
-                if (node.Value.IsActive)
-                {
-                    liTag.AddCssClass(ActiveNodeCssClassName);
-                }
+                var spanTag = new FluentTagBuilder("span")
+                    .SetInnerText(node.Value.Title)
+                    .If(!String.IsNullOrWhiteSpace(node.Value.Description)).MergeAttribute("title", node.Value.Description);
 
-                var spanTag = new TagBuilder("span");
-                spanTag.SetInnerText(node.Value.Title);
-                if (!String.IsNullOrWhiteSpace(node.Value.Description))
-                {
-                    spanTag.MergeAttribute("title", node.Value.Description);
-                }
-
+                var liTag = new FluentTagBuilder("li")
+                    .If(node.Value.IsActive).AddCssClass(ActiveNodeCssClassName);
+                
                 if (String.IsNullOrWhiteSpace(node.Value.Url))
                 {
-                    liTag.InnerHtml += spanTag;
+                    liTag.AddInnerTag(spanTag);
                 }
                 else
                 {
-                    var aTag = new TagBuilder("a");
-                    aTag.MergeAttribute("href", node.Value.Url);
-                    if (node.Value.OpenInNewWindow)
-                    {
-                        aTag.MergeAttribute("target", "_blank");
-                    }
-                    aTag.InnerHtml += spanTag;
-                    liTag.InnerHtml += aTag;
+                    var aTag = new FluentTagBuilder("a")
+                        .MergeAttribute("href", node.Value.Url)
+                        .If(node.Value.OpenInNewWindow).MergeAttribute("target", "_blank")
+                        .AddInnerTag(spanTag);
+                    liTag.AddInnerTag(aTag);
                 }
 
-                if (node.Children.Any())
-                {
-                    liTag.InnerHtml += node.Children.BuildTags();
-                }
-
-                ulTag.InnerHtml += liTag;
+                liTag.If(node.Children.Any()).AddInnerTag(node.Children.BuildTags());
+                ulTag.AddInnerTag(liTag);
             }
             return ulTag;
         }
 
-        private static NavigationManager GetNavigationTreeManager(this HtmlHelper helper)
+        private static NavigationManager GetNavigationManager(RequestContext requestContext)
         {
             var provider = DependencyResolver.Current.GetService<INavigationTreeProvider>();
             if(provider == null)
             {
-                provider = new XmlNavigationTreeProvider(helper.ViewContext.RequestContext, GetSiteMap());
+                provider = new XmlNavigationTreeProvider(requestContext, GetSiteMap());
             }
-            return new NavigationManager(provider, helper.ViewContext.RequestContext.HttpContext.Request.Url);
+            return new NavigationManager(provider, requestContext.HttpContext.Request.Url);
         }
 
         private static XDocument ParseSiteMap()

@@ -8,17 +8,8 @@
 
 <h3>What's Included</h3>
 
-<ul>
-    <li><strong>@Html.ActionLink("Navigation Menu", "menu", "controls")</strong>, 
-        suitable for rendering navigations menus (like the one at the top of the page)</li>
-    <li><strong>@Html.ActionLink("Site Map", "sitemap", "controls")</strong>, 
-        a plain representation of the structure of your site</li>
-    <li><strong>@Html.ActionLink("In This Section", "inthissection", "controls")</strong>,
-         an overview of the user's current area (like the one of the left)</li>
-    <li><strong>@Html.ActionLink("Breadcrumb control", "breadcrumbs", "controls")</strong>,
-        showing the user the their current path in the site (like the one above)</li>
-    <li><strong>@Html.ActionLink("Custom control", "custom", "controls")</strong>, giving you complete control of what is displayed</li>
-</ul>
+@{ Html.RenderPartial("_Controls"); }
+
 <h3>Quick Start</h3>
 
 <ol>
@@ -33,10 +24,10 @@
             <li><a href="https://gist.github.com/chambem9/4983670/raw/67226db1a1a18a9966c4378318604174df94a7c5/sitemap.xml">Example web.sitemap</a></li>
         </ul>
     </li>
-    <li>Add a using directive to your view and call the helper to automatically render a navigation control from your sitemap:
+    <li>In your view, add a using directive and call the helper to automatically render a navigation control from your sitemap:
         <ul>
             <li><code>@@using MC.MvcQuickNav</code></li>
-            <li><code>@@Html.FullNavigation()</code></li>
+            <li><code>@@Html.NavigationMenu()</code></li>
         </ul>
     </li>
     <li>Apply CSS styles to make your control look beautiful:

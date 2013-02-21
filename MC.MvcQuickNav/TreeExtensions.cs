@@ -22,6 +22,12 @@ namespace MC.MvcQuickNav
             }
         }
 
+        public static void PruneMany<T>(this IEnumerable<ITreeNode<T>> nodes, int maxDepth)
+        {
+            foreach(var node in nodes)
+                node.Prune(maxDepth);
+        }
+
         /// <summary>
         /// Walks through the tree, returning each node in turn.
         /// </summary>
