@@ -44,15 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISiteMapProvider.cs" />
+    <Compile Include="INavigationTreeProvider.cs" />
     <Compile Include="ITreeNode.cs" />
     <Compile Include="NavigationHelper.cs" />
     <Compile Include="NavigationItem.cs" />
     <Compile Include="NavigationNode.cs" />
     <Compile Include="NavigationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NavigationTreeProviderDependencyResolver.cs" />
     <Compile Include="TreeExtensions.cs" />
-    <Compile Include="XmlSiteMapProvider.cs" />
+    <Compile Include="XmlNavigationTreeProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

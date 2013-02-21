@@ -1,5 +1,10 @@
 ﻿<ul>
-    <li>All navigation controls are generated from a single sitemap file.</li>
+    <li>All navigation controls are generated from a single XML sitemap file.
+        <ul>
+            <li>Don't want to use an XML file? You can write 
+                @Html.ActionLink("your own provider", "inavigationtreeprovider", "controls").</li>
+        </ul> 
+    </li>
     <li>The controls generate clean, standard, semantic markup, 
         (only <code>ul</code>, <code>li</code>, <code>a</code>, <code>span</code> tags) making them easy to style.</li>
     <li>Support an arbitrary depth of navigation (though make sure your CSS can cope with it!).</li>

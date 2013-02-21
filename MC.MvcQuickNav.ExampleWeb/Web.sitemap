@@ -12,7 +12,7 @@
     <siteMapNode title="Breadcrumbs" url="~/controls/breadcrumbs" />
     <siteMapNode title="Custom Navigation" url="~/controls/custom">
       <siteMapNode title="By Hand" url="~/controls/manual" />
-      <siteMapNode title="NavigationManager" url="~/controls/navigationmanager" />
+      <siteMapNode title="INavigationTreeProvider" url="~/controls/INavigationTreeProvider" />
     </siteMapNode>
   </siteMapNode>
   <siteMapNode title="Example" url="~/demo" description="A menu to show some of the features in action">

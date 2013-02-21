@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MC.MvcQuickNav
 {
-    public interface ISiteMapProvider
+    public interface INavigationTreeProvider
     {
-        IEnumerable<NavigationNode> GetSiteMap();
+        IEnumerable<NavigationNode> GetNavigationNodes();
     }
 }

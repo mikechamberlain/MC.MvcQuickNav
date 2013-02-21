@@ -7,12 +7,12 @@ namespace MC.MvcQuickNav
     public class NavigationManager
     {
         private readonly Uri _currentUrl;
-        private readonly ISiteMapProvider _siteMapProvider;
+        private readonly INavigationTreeProvider _navigationTreeProvider;
 
-        public NavigationManager(ISiteMapProvider siteMapProvider, Uri currentUrl)
+        public NavigationManager(INavigationTreeProvider navigationTreeProvider, Uri currentUrl)
         {
             _currentUrl = currentUrl;
-            _siteMapProvider = siteMapProvider;
+            _navigationTreeProvider = navigationTreeProvider;
         }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace MC.MvcQuickNav
         /// <returns></returns>
         public IEnumerable<NavigationNode> GetNodes(int activeDepth = Int32.MaxValue)
         {
-            var nodes = _siteMapProvider.GetSiteMap().ToList();
+            var nodes = _navigationTreeProvider.GetNavigationNodes().ToList();
             SetNodeActivity(nodes, activeDepth);
             return nodes;
         }
@@ -57,6 +57,7 @@ namespace MC.MvcQuickNav
             // get the nodes in descending order of common url prefix length,
             // ignoring nodes with no common prefix
             var activeNode = (from node in nodeList
+                              where node.Value.Url != null
                               let length = GetCommonPrefixLength(node.Value.Url, _currentUrl.PathAndQuery)
                               where length > 0
                               orderby length descending

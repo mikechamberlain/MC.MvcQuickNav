@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
+using System.Web.Routing;
+using System.Xml.Linq;
 using TreeNodes = System.Collections.Generic.IEnumerable<MC.MvcQuickNav.ITreeNode<MC.MvcQuickNav.NavigationItem>>;
 
 namespace MC.MvcQuickNav
 {
     public static class NavigationHelper
     {
-        internal const string DefaultSiteMapUrl = "~/Web.sitemap";
         private const int DefaultMaxNavigationMenuDepth = 3;
         private const int DefaultMaxChildNavigationDepth = 3;
         private const string ActiveNodeCssClassName = "active";
+        private const string DefaultSiteMapUrl = "~/Web.sitemap";
 
         /// <summary>
         /// Renders the navigation menu for the site.
@@ -34,7 +38,7 @@ namespace MC.MvcQuickNav
         {
             var manager = helper.GetNavigationTreeManager();
             var nodes = manager.GetNodes(1); // main menu shows active node at the top level
-            foreach (var node in nodes)
+            foreach(var node in nodes)
                 node.Prune(maxDepth);
             return nodes.BuildHtml(cssClass);
         }
@@ -66,7 +70,7 @@ namespace MC.MvcQuickNav
 
             var activePath = activeNode.FindPath(n => n.Value.IsActive).ToList();
             activePath.Last().Value.Url = "";
-            foreach (var node in activePath)
+            foreach(var node in activePath)
                 node.Prune(1);
             return activePath.BuildHtml("breadcrumbs");
         }
@@ -78,9 +82,9 @@ namespace MC.MvcQuickNav
         {
             var manager = helper.GetNavigationTreeManager();
             var active = manager.GetActiveNode();
-            return active == null
-                       ? MvcHtmlString.Empty
-                       : new MvcHtmlString(active.Value.Title);
+            return active == null 
+                ? MvcHtmlString.Empty 
+                : new MvcHtmlString(active.Value.Title);
         }
 
         /// <summary>
@@ -112,7 +116,7 @@ namespace MC.MvcQuickNav
         {
             var ulTag = new TagBuilder("ul");
 
-            foreach (var node in nodes)
+            foreach(var node in nodes)
             {
                 var liTag = new TagBuilder("li");
                 if (node.Value.IsActive)
@@ -155,14 +159,36 @@ namespace MC.MvcQuickNav
 
         private static NavigationManager GetNavigationTreeManager(this HtmlHelper helper)
         {
-            var siteMapProvider = DependencyResolver.Current.GetService<ISiteMapProvider>();
-            // default to XmlSiteMapProvider
-            if (siteMapProvider == null)
+            var provider = DependencyResolver.Current.GetService<INavigationTreeProvider>();
+            if(provider == null)
             {
-                var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);
-                siteMapProvider = new XmlSiteMapProvider(urlHelper, HostingEnvironment.MapPath(DefaultSiteMapUrl));
+                provider = new XmlNavigationTreeProvider(helper.ViewContext.RequestContext, GetSiteMap());
             }
-            return new NavigationManager(siteMapProvider, helper.ViewContext.RequestContext.HttpContext.Request.Url);
+            return new NavigationManager(provider, helper.ViewContext.RequestContext.HttpContext.Request.Url);
         }
+
+        private static XDocument ParseSiteMap()
+        {
+            return XDocument.Parse(File.ReadAllText(HostingEnvironment.MapPath(DefaultSiteMapUrl)));
+        }
+
+#if !DEBUG
+        // In release mode, parse the site map to XML once only. 
+        // The app must be restarted for changes to the site map file to take effect.
+        private static readonly Lazy<XDocument> XmlSiteMap = new Lazy<XDocument>(ParseSiteMap, true);
+
+        private static XDocument GetSiteMap()
+        {
+            return XmlSiteMap.Value;
+        }
+#endif
+
+#if DEBUG
+        // In debug mode, parse the site map on each call. Changes to the file are reflected immediately.
+        private static XDocument GetSiteMap()
+        {
+            return ParseSiteMap();
+        }
+#endif
     }
 }

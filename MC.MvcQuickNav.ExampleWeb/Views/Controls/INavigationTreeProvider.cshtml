@@ -1,0 +1,34 @@
+﻿<p>
+    MvcQuickNav uses MVC's <code>DependencyResolver</code> to attempt to resolve a navigation tree provider.
+    When not found, it defaults to its built in <code>XmlNavigationTreeProvider</code>.
+</p>
+
+<p>If you would like to source your navigation tree from somewhere other than the XML file (eg. a database),
+    then you can write your own provider by implementing the INavigationTreeProvider interface. Here'a an example
+    that just supplies a tree of random nodes:
+</p>
+
+<script src="https://gist.github.com/chambem9/5001864.js"></script>
+
+<p>You can then register this class in one of two ways:</p>
+<ul>
+    <li>By registering your provider with your IOC container (if using IOC)</li>
+    <li>By registering a DependencyResolver with MVC (if not using IOC)</li>
+</ul>
+
+<h3>Register your provider with your IOC container</h3>
+<p>If your site is already using an IOC container then you just need to register the class with the container. 
+    Here's an example using <a href="http://www.ninject.org/">Ninject</a>:
+</p>
+
+<script src="https://gist.github.com/chambem9/5000951.js"></script>
+
+<h3>Register a DepedencyResolver</h3>
+<p>If you are not using an IOC container, then you can achieve the same affect by using MvcQuickNav's
+    <code>NavigationTreeProviderDependencyResolver</code>:</p>
+
+<script src="https://gist.github.com/chambem9/5001884.js"></script>
+
+<p>All calls to the helper methods will now use your custom provider to source your navigation tree, eg:</p>
+
+<code>@@Html.NavigationMenu()</code>

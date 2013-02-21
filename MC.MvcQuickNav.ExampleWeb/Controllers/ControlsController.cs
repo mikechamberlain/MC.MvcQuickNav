@@ -43,7 +43,7 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
 
         public ActionResult Manual()
         {
-            var model = GetRandomTree(3);
+            var model = GetRandomTree(3).ToList();
             model.First().Value.IsActive = true;
             return View(model);
         }
@@ -68,7 +68,7 @@ namespace MC.MvcQuickNav.ExampleWeb.Controllers
 
         private static readonly Random Random = new Random((int)DateTime.Now.Ticks);
 
-        public ActionResult NavigationManager()
+        public ActionResult INavigationTreeProvider()
         {
             return View();
         }

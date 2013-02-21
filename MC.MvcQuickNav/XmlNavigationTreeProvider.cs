@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
+using System.Web.Routing;
 using System.Xml.Linq;
 
 namespace MC.MvcQuickNav
 {
-    internal class XmlSiteMapProvider : ISiteMapProvider
+    public class XmlNavigationTreeProvider : INavigationTreeProvider
     {
+        private readonly XDocument _sitemap;
         private readonly UrlHelper _urlHelper;
-        private readonly string _xmlText;
 
-        public XmlSiteMapProvider(UrlHelper urlHelper, string siteMapPath)
+        public XmlNavigationTreeProvider(RequestContext requestContext, XDocument sitemap)
         {
-            _urlHelper = urlHelper;
-            // read this from disk once and store it for later
-            _xmlText = File.ReadAllText(siteMapPath);
+            _sitemap = sitemap;
+            _urlHelper = new UrlHelper(requestContext);
         }
 
-        public IEnumerable<NavigationNode> GetSiteMap()
+        public IEnumerable<NavigationNode> GetNavigationNodes()
         {
-            var xdoc = XDocument.Parse(_xmlText);
-            return FromSiteMapElement(xdoc.Root);
+            return FromSiteMapElement(_sitemap.Root);
         }
 
         private IEnumerable<NavigationNode> FromSiteMapElement(XElement xel)

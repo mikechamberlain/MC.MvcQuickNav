@@ -1,8 +1,19 @@
 ﻿@using MC.MvcQuickNav
 @model IEnumerable<NavigationNode>
+<code>@@Html.CustomNavigation(nodes, cssClassName)</code>
+
+<p>The included controls go through the following steps to create their output:</p>
+<ol>
+    <li>read the site map file</li>
+    <li>generate a tree to represent the map</li>
+    <li>process this tree to contain only the nodes required for the view</li>
+    <li>renders this tree to HTML</li>
+</ol>
+
+<p>If you need complete control over the output then you can create the tree manually and hook straight in to step 4 with the CustomNavigation helper.</p>
 <p>
-    Here is an example of creating a navigation tree by hand and rendering it to the view.  We see how the action method creates a tree 
-    of random nodes, sets one to be the active, and passes it as the model:
+    Here is an example of creating a navigation tree by hand.  We see how the action method creates a tree 
+    of random nodes, sets one to be the active, and passes it as the model to the view:
 </p>
 
 <script src="https://gist.github.com/chambem9/4984499.js"></script>

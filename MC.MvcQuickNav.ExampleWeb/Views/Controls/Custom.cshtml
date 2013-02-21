@@ -1,19 +1,12 @@
 ﻿@using MC.MvcQuickNav
 @model List<NavigationNode>
 
-<code>@@Html.CustomNavigation(navigationNodes, cssClass)</code>
-
-<p>The included controls go through the following steps to create their output:</p>
-<ol>
-    <li>read the site map file</li>
-    <li>generate a tree to represent the map</li>
-    <li>process this tree to contain only the nodes required for the view</li>
-    <li>renders this tree to HTML</li>
-</ol>
-
-<p>If you need complete control over the output then you can create the tree manually hook straight in to step 4 with the CustomNavigation helper.
-There are two ways you can create your tree:</>
+<p>MvcQuickNav offers two customization points:</p>
 <ul>
-    <li>@Html.ActionLink("By hand", "manual", "controls")</li>
-    <li>@Html.ActionLink("With the NavigationManager", "navigationmanager", "controls")</li>
+    <li>@Html.ActionLink("Create your navigation tree in code", "manual")
+         and pass it to the CustomNavigation helper. This option is simple, very flexible, but very manual.</li>
+    <li>@Html.ActionLink("Write your own NavigationTreeProvider", "INavigationTreeProvider")
+        to replace MvcQuickNav's built in <code>XmlSiteMapProvider</code> and continue to use the built in controls. 
+        This option is just a little more complex, but allows you to take advantage of all the logic and features already provided by MvcQuickNav.
+    </li>
 </ul>
