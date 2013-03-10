@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap>
-  <siteMapNode title="About" url="~/">
+  <siteMapNode title="Home" url="~/">
     <siteMapNode title="Walkthrough" url="~/walkthrough" />
   </siteMapNode>
   <siteMapNode title="Download" url="~/download" />
