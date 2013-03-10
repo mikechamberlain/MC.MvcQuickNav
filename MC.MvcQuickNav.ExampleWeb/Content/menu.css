@@ -66,7 +66,7 @@ nav.menu a {
                 padding: 5px;
                 color: #646464;
                 white-space: nowrap;
-                width: 170px;
+                width: 150px;
                 font-weight: normal;
             }
 
@@ -87,7 +87,7 @@ nav.menu a {
 
                 nav.menu ul ul li span {
                     color: #fff;
-                    width: 170px;
+                    width: 150px;
                 }
 
                     nav.menu ul ul li a:hover {
