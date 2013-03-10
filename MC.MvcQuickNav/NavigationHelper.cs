@@ -10,6 +10,9 @@ using TreeNodes = System.Collections.Generic.IEnumerable<MC.MvcQuickNav.ITreeNod
 
 namespace MC.MvcQuickNav
 {
+    /// <summary>
+    /// Extension methods to render the navigation controls.
+    /// </summary>
     public static class NavigationHelper
     {
         private const int DefaultMaxNavigationMenuDepth = 3;
@@ -51,7 +54,7 @@ namespace MC.MvcQuickNav
             if (activeBranch == null || !activeBranch.Children.Any())
                 return MvcHtmlString.Empty;
 
-            activeBranch.Walk().Single(n => n.Value.IsActive).Value.Url = ""; // don't want the active node to be a link
+            activeBranch.Walk(maxDepth).Single(n => n.Value.IsActive).Value.Url = ""; // don't want the active node to be a link
             activeBranch.Prune(maxDepth);
             return activeBranch.BuildHtml("section");
         }
@@ -67,8 +70,8 @@ namespace MC.MvcQuickNav
                 return MvcHtmlString.Empty;
 
             var activePath = activeNode.FindPath(n => n.Value.IsActive).ToList();
-            activePath.Last().Value.Url = "";
-            activePath.PruneMany(1);
+            activePath.Last().Value.Url = ""; // don't want the active node to be a link
+            activePath.PruneMany(1); // only want to render the nodes that make up the active path, not their children
             return activePath.BuildHtml("breadcrumbs");
         }
 
@@ -99,9 +102,9 @@ namespace MC.MvcQuickNav
                 return MvcHtmlString.Empty;
 
             var tags = treeNodes.BuildTags();
-            var parent = new TagBuilder("nav");
-            parent.AddCssClass(cssClassName);
-            parent.InnerHtml += tags;
+            var parent = new FluentTagBuilder("nav")
+                .AddCssClass(cssClassName)
+                .AddInnerTag(tags);
             return new MvcHtmlString(parent.ToString());
         }
 
@@ -116,24 +119,25 @@ namespace MC.MvcQuickNav
 
             foreach(var node in nodes)
             {
-                var spanTag = new FluentTagBuilder("span")
-                    .SetInnerText(node.Value.Title)
-                    .If(!String.IsNullOrWhiteSpace(node.Value.Description)).MergeAttribute("title", node.Value.Description);
-
                 var liTag = new FluentTagBuilder("li")
                     .If(node.Value.IsActive).AddCssClass(ActiveNodeCssClassName);
+
+                var spanTag = new FluentTagBuilder("span")
+                    .SetInnerText(node.Value.Title)
+                    .If(!String.IsNullOrWhiteSpace(node.Value.Description)).SetAttribute("title", node.Value.Description);
                 
-                if (String.IsNullOrWhiteSpace(node.Value.Url))
+                // if we have a url then enclose the span tag in an a tag
+                if (!String.IsNullOrWhiteSpace(node.Value.Url))
                 {
-                    liTag.AddInnerTag(spanTag);
+                    var aTag = new FluentTagBuilder("a")
+                        .SetAttribute("href", node.Value.Url)
+                        .If(node.Value.OpenInNewWindow).SetAttribute("target", "_blank")
+                        .AddInnerTag(spanTag);
+                    liTag.AddInnerTag(aTag);
                 }
                 else
                 {
-                    var aTag = new FluentTagBuilder("a")
-                        .MergeAttribute("href", node.Value.Url)
-                        .If(node.Value.OpenInNewWindow).MergeAttribute("target", "_blank")
-                        .AddInnerTag(spanTag);
-                    liTag.AddInnerTag(aTag);
+                    liTag.AddInnerTag(spanTag);
                 }
 
                 liTag.If(node.Children.Any()).AddInnerTag(node.Children.BuildTags());

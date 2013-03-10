@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Web;
-using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Xml.Linq;
 
 namespace MC.MvcQuickNav
 {
+    /// <summary>
+    /// Converts an XML sitemap to a navigation tree.
+    /// </summary>
     public class XmlNavigationTreeProvider : INavigationTreeProvider
     {
         private readonly XDocument _sitemap;

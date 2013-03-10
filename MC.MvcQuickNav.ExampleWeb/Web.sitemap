@@ -2,7 +2,6 @@
 <siteMap>
   <siteMapNode title="About" url="~/">
     <siteMapNode title="Walkthrough" url="~/walkthrough" />
-    <siteMapNode title="Features" url="~/features" />
   </siteMapNode>
   <siteMapNode title="Download" url="~/download" />
   <siteMapNode title="Controls" url="~/controls" description="The controls that QuickNav can render">
@@ -12,7 +11,7 @@
     <siteMapNode title="Breadcrumbs" url="~/controls/breadcrumbs" />
     <siteMapNode title="Custom Navigation" url="~/controls/custom">
       <siteMapNode title="By Hand" url="~/controls/manual" />
-      <siteMapNode title="INavigationTreeProvider" url="~/controls/INavigationTreeProvider" />
+      <siteMapNode title="Custom Provider" url="~/controls/INavigationTreeProvider" />
     </siteMapNode>
   </siteMapNode>
   <siteMapNode title="Demo" url="~/demo" description="A menu to show some of the features in action">

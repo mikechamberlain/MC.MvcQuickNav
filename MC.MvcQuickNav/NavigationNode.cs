@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace MC.MvcQuickNav
 {
+    /// <summary>
+    /// Represents a node in the navigation tree.
+    /// </summary>
     public class NavigationNode : ITreeNode<NavigationItem>
     {
         private List<ITreeNode<NavigationItem>> _children;

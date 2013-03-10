@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace MC.MvcQuickNav
 {
+    /// <summary>
+    /// Extension methods for working with trees.
+    /// </summary>
     public static class TreeExtensions
     {
         /// <summary>
@@ -22,6 +25,9 @@ namespace MC.MvcQuickNav
             }
         }
 
+        /// <summary>
+        /// Removes all nodes below a certain depth from a series of trees.
+        /// </summary>
         public static void PruneMany<T>(this IEnumerable<ITreeNode<T>> nodes, int maxDepth)
         {
             foreach(var node in nodes)
@@ -63,7 +69,7 @@ namespace MC.MvcQuickNav
                 return new List<ITreeNode<T>> { node };
             }
 
-            // check each child node to try to find the active
+            // check each child node to try to find our target
             foreach (var child in node.Children)
             {
                 var pathToActive = FindPath(child, predicate).ToList();

@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace MC.MvcQuickNav
 {
+    /// <summary>
+    /// Class to provide functionality for working with a navigation tree.
+    /// </summary>
     public class NavigationManager
     {
         private readonly Uri _currentUrl;

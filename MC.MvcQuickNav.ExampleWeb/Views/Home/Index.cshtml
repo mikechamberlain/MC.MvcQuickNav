@@ -10,6 +10,30 @@
 
 @{ Html.RenderPartial("_Controls"); }
 
+<h3>Features</h3>
+
+<ul>
+    <li>All navigation controls are generated from a single XML sitemap file.
+        <ul>
+            <li>Don't want to use an XML file? You can write 
+                @Html.ActionLink("your own provider", "inavigationtreeprovider", "controls").</li>
+        </ul> 
+    </li>
+    <li>The controls generate clean, standard, semantic markup, 
+        (only <code>ul</code>, <code>li</code>, <code>a</code>, <code>span</code> tags) making them easy to style.</li>
+    <li>Support an arbitrary depth of navigation (though make sure your CSS can cope with it!).</li>
+    <li>Supports tooltips and opening in a new window.</li>
+    <li>Tracks user's current node automatically from the URL.
+        <ul>
+            <li>An <code>active</code> CSS class is added to this node, which allows the current node to be distinguished using CSS.</li>
+            <li>Calculated by finding the node with the closest matching URL to the user's current URL.
+                Does not use controller names or actions, giving total flexibility.
+            </li>
+        </ul>
+    </li>
+    <li>Backwards compatible with ASP.NET Webform's sitemap file format.</li>
+</ul>
+
 <h3>Quick Start</h3>
 
 <ol>
@@ -24,7 +48,7 @@
             <li><a href="https://gist.github.com/chambem9/4983670/raw/67226db1a1a18a9966c4378318604174df94a7c5/sitemap.xml">Example web.sitemap</a></li>
         </ul>
     </li>
-    <li>In your view, add a using directive and call the helper to automatically render a navigation control from your sitemap:
+    <li>In your view, add a using directive and call a helper to automatically render a navigation control from your sitemap:
         <ul>
             <li><code>@@using MC.MvcQuickNav</code></li>
             <li><code>@@Html.NavigationMenu()</code></li>

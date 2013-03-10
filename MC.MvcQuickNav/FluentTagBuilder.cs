@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web.Mvc;
 
 namespace MC.MvcQuickNav
 {
     /// <summary>
-    /// Wrapper for <see cref="TagBuilder"/> that makes
-    /// it a fluent API.
+    /// Wrapper for a <see cref="TagBuilder"/> to give it a nicer API.
     /// </summary>
     internal class FluentTagBuilder
     {
@@ -20,7 +16,7 @@ namespace MC.MvcQuickNav
             _builder = new TagBuilder(tagName);
         }
 
-        public FluentTagBuilder MergeAttribute(string key, string value)
+        public FluentTagBuilder SetAttribute(string key, string value)
         {
             return Operate(() => _builder.MergeAttribute(key, value));
         }
